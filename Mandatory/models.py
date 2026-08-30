@@ -43,6 +43,8 @@ class sajidxpgames(models.Model):
     title = models.CharField(max_length=20)
     sort_desc=models.CharField(max_length=30)
     image = models.ImageField(upload_to='sajidxpgames/')
+    url_name = models.CharField(max_length=50,default='home')
+
 
     def __str__(self):
         return self.title
