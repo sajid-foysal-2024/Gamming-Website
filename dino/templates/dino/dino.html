@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'dino/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="game-wrapper">
+    <div class="score-board">
+        <span id="highScore">HI 00000</span>
+        <span id="score">00000</span>
+    </div>
+
+    <div class="game-container" id="gameContainer">
+        <img src="{% static 'dino/images/cloud.png' %}" class="cloud" id="cloud1" alt="">
+        <img src="{% static 'dino/images/cloud.png' %}" class="cloud" id="cloud2" alt="">
+        <img src="{% static 'dino/images/cloud.png' %}" class="cloud" id="cloud3" alt="">
+
+        <img src="{% static 'dino/images/dinosaur-run1.png' %}" class="dino" id="dino" alt="dino">
+
+        <div class="ground" id="ground"></div>
+
+        <div class="game-over-panel" id="gameOverPanel">
+            <p id="gameOverText">G A M E&nbsp;&nbsp;O V E R</p>
+            <button id="restartBtn" aria-label="restart">&#8635;</button>
+        </div>
+
+        <div class="start-message" id="startMessage">Press SPACE or ↑ to jump — press to start</div>
+    </div>
+</div>
+
+<script>
+    const IMAGE_BASE = "{% static 'dino/images/' %}";
+    const AUDIO_BASE = "{% static 'dino/audio/' %}";
+</script>
+<script src="{% static 'dino/js/game.js' %}"></script>
+
+{% endblock %}

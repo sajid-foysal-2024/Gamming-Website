@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'Mandatory',
     'snake',
     'chibicapcoe',
+    'dino',
 
     
 
