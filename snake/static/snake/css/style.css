@@ -1,52 +1,151 @@
-* {
-    padding: 0;
-    margin: 0;
-}
+/* Only style things inside .snake-page so the site navbar/footer stay untouched */
 
-body {
-    background: url("../img/bg.png");
-    min-height: 100vh;
-    background-size: 100vw 100vh;
+.snake-page {
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
+    padding: 40px 16px 60px;
     display: flex;
     justify-content: center;
-    align-items: center;
-
 }
-#score{
-    position: absolute;
-    top: 9px;
-    right: 200px;
-    font-size: 39px;
+
+.snake-game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.snake-scores {
+    display: flex;
+    gap: 24px;
+    font-size: clamp(18px, 3vw, 28px);
     font-weight: bold;
 }
 
-#board {
-    background: linear-gradient(rgb(170, 236, 170), rgb(236, 236, 160));
-    width: 90vmin;
-    height: 92vmin;
-    border: 5px solid black;
-    display:  grid;
-    grid-template-rows: repeat(18,1fr) ;
-    grid-template-columns: repeat(18,1fr) ;
-}
-
-.head{
-    background-color: rgb(19, 219, 176);
-    border: 2px solid purple;
-    transform:scale(1.02) ;
-    border-radius: 9px;
-    
-    
-
-}
-.snake{
-    background-color: purple;
-    border:  .25vmin solid white;
+#scoreBox,
+#highScoreBox {
+    background: rgba(19, 19, 19, 0.85);
+    color: #fff;
+    padding: 6px 18px;
     border-radius: 12px;
 }
-.food{
-    background: linear-gradient(red,purple) ;
-    border:  .25vmin solid black;
-    border-radius:  8px;
+
+#highScoreBox {
+    color: #ffb320;
+}
+
+.board-wrap {
+    position: relative;
+}
+
+.board {
+    background: linear-gradient(rgb(170, 236, 170), rgb(236, 236, 160));
+    width: min(80vmin, 640px);
+    height: min(80vmin, 640px);
+    border: 5px solid #131313;
+    border-radius: 12px;
+    display: grid;
+    grid-template-rows: repeat(18, 1fr);
+    grid-template-columns: repeat(18, 1fr);
+    overflow: hidden;
+}
+
+/* ---- snake girl head ---- */
+.head {
+    position: relative;
+    z-index: 3;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transform: scale(1.9);
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.35));
+}
+
+/* flip the girl when the snake moves left */
+.head.face-left {
+    transform: scale(1.9) scaleX(-1);
+}
+
+/* ---- snake body ---- */
+.snake {
+    position: relative;
+    z-index: 2;
+    border-radius: 50%;
+    transform: scale(1.2);
+    background:
+        radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.45) 0 18%, transparent 20%),
+        radial-gradient(circle at 50% 50%, #7ed957 0 55%, #3f9b2f 100%);
+    border: 0.3vmin solid #2d6e22;
+}
+
+/* every second segment a bit darker, like snake scales */
+.snake.dark {
+    background:
+        radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.35) 0 18%, transparent 20%),
+        radial-gradient(circle at 50% 50%, #5cc43c 0 55%, #2f7f23 100%);
+}
+
+.snake.tail {
+    transform: scale(0.75);
+}
+
+/* ---- food (apple) ---- */
+.food {
+    position: relative;
+    z-index: 1;
+    border-radius: 50%;
+    transform: scale(0.9);
+    background: radial-gradient(circle at 35% 30%, #ff8a8a 0 15%, #e0201b 45%, #a3100c 100%);
+    box-shadow: 0 0 8px rgba(255, 60, 60, 0.6);
+    animation: food-pulse 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes food-pulse {
+    from { transform: scale(0.8); }
+    to   { transform: scale(1); }
+}
+
+/* ---- start / game over panel ---- */
+.snake-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 16px;
+    background: rgba(19, 19, 19, 0.7);
+    border-radius: 12px;
+    color: #fff;
+    z-index: 5;
+}
+
+.snake-overlay.hidden {
+    display: none;
+}
+
+.overlay-girl {
+    width: 35%;
+    max-width: 200px;
+}
+
+.snake-overlay h3 {
+    color: #fff;
+    margin: 8px 0;
+}
+
+.snake-overlay p {
+    color: #ddd;
+    margin: 0;
+}
+
+.snake-help {
+    background: rgba(255, 255, 255, 0.85);
+    color: #131313;
+    padding: 6px 14px;
+    border-radius: 10px;
+    margin: 0;
+    text-align: center;
 }

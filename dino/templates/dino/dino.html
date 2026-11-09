@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}Dino Chan - SajidXP{% endblock %}
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'dino/css/style.css' %}">
 {% endblock %}
@@ -31,6 +33,9 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block extra_js %}
 <script>
     const IMAGE_BASE = "{% static 'dino/images/' %}";
     const AUDIO_BASE = "{% static 'dino/audio/' %}";

@@ -1,8 +1,8 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 <head>
-	<title>Game Warrior Template</title>
+	<title>{% block title %}SajidXP{% endblock %}</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Game Warrior Template">
 	<meta name="keywords" content="warrior, game, creative, html">
@@ -20,9 +20,6 @@
 	<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 	<link rel="stylesheet" href="{% static 'css/animate.css' %}"/>
 
-	<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/animate.css' %}"/>
-
     {% block extra_css %}{% endblock %}
 
 </head>
@@ -36,7 +33,7 @@
 	<header class="header-section">
 		<div class="container">
 			<!-- logo -->
-			<a class="site-logo" href="index.html">
+			<a class="site-logo" href="{% url 'home' %}">
 				<img src="{% static 'img/logo.png' %}" alt="">
 			</a>
 			<div class="user-panel">
@@ -49,11 +46,11 @@
 			<!-- site menu -->
 			<nav class="main-menu">
 				<ul>
-					<li><a href="">Home</a></li>
-					<li><a href="">Games</a></li>
-					<li><a href="">Blog</a></li>
-					<li><a href="">Forums</a></li>
-					<li><a href="">Contact</a></li>
+					<li><a href="{% url 'home' %}">Home</a></li>
+					<li><a href="{% url 'home' %}#games">Games</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Forums</a></li>
+					<li><a href="#">Contact</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -156,11 +153,11 @@
 	<footer class="footer-section">
 		<div class="container">
 			<ul class="footer-menu">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="review.html">Games</a></li>
-				<li><a href="categories.html">Blog</a></li>
-				<li><a href="community.html">Forums</a></li>
-				<li><a href="contact.html">Contact</a></li>
+				<li><a href="{% url 'home' %}">Home</a></li>
+				<li><a href="{% url 'home' %}#games">Games</a></li>
+				<li><a href="#">Blog</a></li>
+				<li><a href="#">Forums</a></li>
+				<li><a href="#">Contact</a></li>
 			</ul>
 			<p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
@@ -177,6 +174,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="{% static 'js/owl.carousel.min.js' %}"></script>
 	<script src="{% static 'js/jquery.marquee.min.js' %}"></script>
 	<script src="{% static 'js/main.js' %}"></script>
+	{% block extra_js %}{% endblock %}
 </body>
 </html>
 

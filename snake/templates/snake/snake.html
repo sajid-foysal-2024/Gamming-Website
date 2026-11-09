@@ -1,24 +1,39 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake game by sajid</title>
-    <link rel="stylesheet" href="{% static 'snake/css/style.css' %}">
-</head>
-<body>
-    <div class="body">
-        <div id="scoreBox">Score:0</div>
-        <div id="highScoreBox">HighScore : 0</div>
-        <div class="board" id="board"></div>
+{% block title %}Chibi Snake - SajidXP{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'snake/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="snake-page" style="background-image: url('{% static 'snake/img/bg.png' %}');">
+    <div class="snake-game">
+        <div class="snake-scores">
+            <div id="scoreBox">Score: 0</div>
+            <div id="highScoreBox">HighScore: 0</div>
+        </div>
+
+        <div class="board-wrap">
+            <div class="board" id="board"></div>
+
+            <div class="snake-overlay" id="overlay">
+                <img src="{% static 'snake/img/4.png' %}" alt="Snake girl" class="overlay-girl">
+                <h3 id="overlayTitle">Chibi Snake</h3>
+                <p id="overlayText">Arrow key চাপো (মোবাইলে swipe করো) খেলা শুরু করতে</p>
+            </div>
+        </div>
+
+        <p class="snake-help">Snake girl কে খাবার খাওয়াও, দেয়ালে বা নিজের শরীরে ধাক্কা খেও না!</p>
     </div>
+</section>
+{% endblock %}
 
-    <script>
-      const STATIC_AUDIO_PATH = "{% static 'snake/audio/' %}";
-    </script>
-
-    <script src="{% static 'snake/js/index.js' %}"></script>
-</body>
-</html>
+{% block extra_js %}
+<script>
+    const STATIC_AUDIO_PATH = "{% static 'snake/audio/' %}";
+    const SNAKE_GIRL_IMG = "{% static 'snake/img/4.png' %}";
+</script>
+<script src="{% static 'snake/js/index.js' %}"></script>
+{% endblock %}

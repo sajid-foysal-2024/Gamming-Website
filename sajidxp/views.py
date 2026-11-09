@@ -2,7 +2,7 @@ from django.shortcuts import render
 from Mandatory.models import HeroSlide, NewsTicker,sajidxpgames
 
 def home(request):
-    slides = HeroSlide.objects.all()
+    slides = HeroSlide.objects.filter(is_active=True)
     news_items = NewsTicker.objects.filter(is_active=True)
     games=sajidxpgames.objects.all()
     context={

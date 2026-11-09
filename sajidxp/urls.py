@@ -27,4 +27,8 @@ urlpatterns = [
     path('chibicapcoe/', include('chibicapcoe.urls')),
     path('dino/', include('dino.urls')),
 
-]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+# Serve only the upload folders (not the whole project folder) in development.
+urlpatterns += static(settings.MEDIA_URL + 'hero/', document_root=settings.BASE_DIR / 'hero')
+urlpatterns += static(settings.MEDIA_URL + 'sajidxpgames/', document_root=settings.BASE_DIR / 'sajidxpgames')

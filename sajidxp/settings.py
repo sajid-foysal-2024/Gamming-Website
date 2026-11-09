@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 
 from pathlib import Path
 
-from django.conf.global_settings import STATICFILES_DIRS
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +25,7 @@ SECRET_KEY = 'django-insecure-x-k79k(2m_m(!(n%nockymdf*$!v+1*m+4ago+*_8@_+(&f^3u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -43,9 +41,6 @@ INSTALLED_APPS = [
     'snake',
     'chibicapcoe',
     'dino',
-
-    
-
 ]
 
 MIDDLEWARE = [
@@ -124,9 +119,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS=[
+STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+# Uploaded images (HeroSlide, sajidxpgames) are saved in the project folder:
+# BASE_DIR/hero/ and BASE_DIR/sajidxpgames/. They are served under /media/.
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR
 
 
 # Email

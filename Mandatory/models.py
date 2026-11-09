@@ -1,8 +1,5 @@
 from django.db import models
-
-# Create your models here.
-
-from django.db import models
+from django.urls import NoReverseMatch, reverse
 
 
 class HeroSlide(models.Model):
@@ -45,6 +42,12 @@ class sajidxpgames(models.Model):
     image = models.ImageField(upload_to='sajidxpgames/')
     url_name = models.CharField(max_length=50,default='home')
 
+    def get_play_url(self):
+        # A wrong url_name in admin should not crash the home page.
+        try:
+            return reverse(self.url_name)
+        except NoReverseMatch:
+            return '#'
 
     def __str__(self):
         return self.title
