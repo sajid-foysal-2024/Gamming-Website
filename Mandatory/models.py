@@ -25,7 +25,7 @@ class NewsTicker(models.Model):
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='new')
     text = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
-    order = models.PositiveIntegerField(default=0)  # কোনটা আগে দেখাবে সেটা ঠিক করার জন্য
+    order = models.PositiveIntegerField(default=0)  # lower number is shown first
 
     class Meta:
         ordering = ['order']

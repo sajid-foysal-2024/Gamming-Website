@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - SajidXP{% endblock %}
+
+{% block content %}
+<section class="auth-section">
+    <div class="auth-card">
+        <h2>Register</h2>
+
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            {% include 'form_fields.html' %}
+            <button type="submit" class="site-btn">Register</button>
+        </form>
+
+        <p class="auth-switch">Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+    </div>
+</section>
+{% endblock %}

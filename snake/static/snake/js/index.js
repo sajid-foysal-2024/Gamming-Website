@@ -91,7 +91,7 @@ function endGame() {
     playSound(gameOverSound);
     gameOver = true;
     inputDir = { x: 0, y: 0 };
-    showOverlay('Game Over!', 'তোমার score: ' + score + ' — আবার খেলতে arrow key চাপো');
+    showOverlay('Game Over!', 'Your score: ' + score + ' — press an arrow key to play again');
 }
 
 function resetGame() {
